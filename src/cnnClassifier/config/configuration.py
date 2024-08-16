@@ -5,7 +5,10 @@ import zipfile
 import gdown
 from cnnClassifier import logger
 from cnnClassifier.utils.common import get_size
-from cnnClassifier.entity.config_entity import DataIngestionConfig, PrepareBaseModelConfig, TrainingConfig
+from cnnClassifier.entity.config_entity import (DataIngestionConfig, 
+                                                PrepareBaseModelConfig, 
+                                                TrainingConfig,
+                                                EvaluationConfig)
 class ConfigurationManager:
 
     
@@ -78,3 +81,14 @@ class ConfigurationManager:
         return training_config
         
 
+
+    def get_evaluation_config(self) -> EvaluationConfig:
+        eval_config = EvaluationConfig(
+            path_of_model="artifacts/training/model.h5",
+            training_data="artifacts/data_ingestion/Data/train",
+            mlflow_uri="https://dagshub.com/psycoplankton/Chest-Cancer-Prediction-Model.mlflow",
+            all_params=self.params,
+            params_image_size=self.params.IMAGE_SIZE,
+            params_batch_size=self.params.BATCH_SIZE
+        )
+        return eval_config

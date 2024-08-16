@@ -25,6 +25,7 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+.dvc/
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -163,3 +164,5 @@ cython_debug/
 
 #Dataset folder
 artifacts/
+.dvcignore
+
